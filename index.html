@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script/script.js"></script>
+    <title>palestra</title>
+</head>
+<body>
+    
+    <h1>palestra!!</h1>
+
+    <label for="mail">dimmi la mail</label>
+    <input type="text" id="mail">
+    <br>
+    <br>
+    <label for="nome">dimmi il nome</label>
+    <input type="text" id="nome">
+    <br><br>
+    <select name="corso" id="corso">
+        <option value="yoga">yoga</option>
+        <option value="pesi">pesi</option>
+        <option value="cardio">cardio</option>
+        <option value="macchine">macchine</option>
+    </select>
+
+    <button onclick="invia()">invia dati</button>
+
+    <h2>Rimuovi prenotazione</h2>
+    <label for="mailRimuovi">Mail per rimuovere prenotazione:</label>
+    <input type="text" id="mailRimuovi">
+    
+    <label for="corsoRimuovi">Seleziona corso da rimuovere:</label>
+    <select name="corsoRimuovi" id="corsoRimuovi">
+        <option value="yoga">yoga</option>
+        <option value="pesi">pesi</option>
+        <option value="cardio">cardio</option>
+        <option value="macchine">macchine</option>
+    </select>
+
+    <button onclick="rimuovi()">Rimuovi prenotazione</button>
+    <br>
+    <div id="risposta"></div>
+
+</body>
+</html>
