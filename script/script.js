@@ -5,8 +5,11 @@ function invia() {
     nome = document.getElementById("nome").value;
     corso = document.getElementById("corso").value;
 
-    crea_obj(nome, mail);
-    add_corso(corso, mail);
+    if (validateMail(mail)) {
+
+        crea_obj(nome, mail);
+        add_corso(corso, mail);
+    }
 
 }
 
@@ -34,17 +37,27 @@ function add_corso(corso, mail) {
 
 function stampa_robe(mail) {
     if (a[mail]) {
-        document.getElementById("risposta").innerHTML += mail + " | " + a[mail].nome + " | " + a[mail].cosa_fa.join(", ") + "\n";
+        document.getElementById("rispostaabb").innerHTML = mail + " | " + a[mail].nome + " | " + a[mail].cosa_fa.join(", ") + "\n";
     } else {
-        document.getElementById("risposta").innerHTML += "non esiste" + "\n";
+        document.getElementById("rispostaabb").innerHTML = "non esiste" + "\n";
     }
 }
 
-function GUI () {
-    document.getElementById("risposta").innerHTML = "";
-    for (mail in a) {
-        stampa_robe(mail)
+function stampa_robe_tabella(mail) {
+    if (a[mail]) {
+        return (`<tr><td>${mail}</td><td>${a[mail].nome}</td><td>${a[mail].cosa_fa.join(", ")}</td></tr>`);
+    } else {
+        return ("<tr><td>Non esiste</td></tr>");
     }
+}
+
+function GUI() {
+    let content = "<table><tr><td>Mail</td><td>Nome</td><td>Corsi</td></tr>";
+    for (mail in a) {
+        content += stampa_robe_tabella(mail)
+    }
+    content += "</table>"
+    document.getElementById("risposta").innerHTML = content;
 }
 
 function rimuovi() {
@@ -74,4 +87,37 @@ function rimuoviPrenotazione(mail, attivita) {
     }
     GUI();
     return false;
+}
+
+function validateMail(mail) {
+    let posizione = mail.indexOf("@");
+    let punto_ce = false;
+
+    if (posizione > -1) {
+        for (let i = posizione + 1; i < mail.length; i++) {
+            if (mail[i] == "@") {
+                alert("mail sbagliata")
+                return false;
+            } else if (mail[i] == ".") {
+                if (punto_ce) {
+                    alert("mail sbagliata");
+                    return false;
+                } else {
+                    punto_ce = true;
+                }
+            }
+        }
+        if (punto_ce) {
+            alert("mail ok");
+            return true
+        } else {
+            alert("mail sbagliata");
+            return false
+        }
+    } else {
+        alert("mail sbagliata");
+        return false;
+    }
+
+
 }

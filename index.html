@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="script/script.js"></script>
+    <link rel="stylesheet" href="style/stylesheet.css">
     <title>palestra</title>
 </head>
+
 <body>
-    
+
     <h1>palestra!!</h1>
 
     <label for="mail">dimmi la mail</label>
-    <input type="text" id="mail">
+    <input type="text" id="mail" placeholder="example@mail.com">
     <br>
     <br>
     <label for="nome">dimmi il nome</label>
-    <input type="text" id="nome">
+    <input type="text" id="nome" placeholder="gianfranco max">
     <br><br>
+    <label for="corso">attività: </label>
     <select name="corso" id="corso">
         <option value="yoga">yoga</option>
         <option value="pesi">pesi</option>
@@ -25,11 +29,11 @@
     </select>
 
     <button onclick="invia()">invia dati</button>
-
+    <br><br>
     <h2>Rimuovi prenotazione</h2>
     <label for="mailRimuovi">Mail per rimuovere prenotazione:</label>
-    <input type="text" id="mailRimuovi">
-    
+    <input type="text" id="mailRimuovi" placeholder="example@mail.com">
+    <br><br>
     <label for="corsoRimuovi">Seleziona corso da rimuovere:</label>
     <select name="corsoRimuovi" id="corsoRimuovi">
         <option value="yoga">yoga</option>
@@ -39,8 +43,16 @@
     </select>
 
     <button onclick="rimuovi()">Rimuovi prenotazione</button>
+    <br><br>
+    <br><br>
+    <label for="rispabbin">Cerca abbonato</label>
+    <input type="text" id="rispabbin"><button onclick="stampa_robe(document.getElementById('rispabbin').value)">Cerca</button>
     <br>
-    <div id="risposta"></div>
+    <div id="rispostaabb"></div>
+    <br><br>
+    <h2>elenco mail, nome, attività</h2>
+    <div id="risposta">...</div>
 
 </body>
+
 </html>
